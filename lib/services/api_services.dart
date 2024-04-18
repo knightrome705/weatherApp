@@ -10,7 +10,7 @@ class WheatherServices{
 
   static Future<dynamic> getWheatherData()async{
     try{
-      var response=await client.get(Uri.parse('$weatherapi&key=$weatherkey'));
+      var response=await client.get(Uri.parse('https://api.weatherapi.com/v1/current.json?q=kannur&key=$weatherkey'));
     if(response.statusCode==200){
       var jsondata=response.body;
       return weatherFromJson(jsondata);
