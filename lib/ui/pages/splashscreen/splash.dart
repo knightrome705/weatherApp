@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:forecast/routes/routes_name.dart';
 import 'package:forecast/ui/components/app_style.dart';
-import 'package:forecast/ui/pages/homescreen/home.dart';
 import 'package:forecast/utils/colors.dart';
 
 class Splash extends StatelessWidget {
@@ -8,6 +8,7 @@ class Splash extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Future.delayed(const Duration(seconds: 2)).whenComplete(() => Navigator.pushReplacementNamed(context, RouteName.homescreen));
     return Scaffold(
       body: Container(
         height: double.infinity,
@@ -42,7 +43,7 @@ class Splash extends StatelessWidget {
               height: 10,
              ),
              InkWell(
-              onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Home(),)),
+              // onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Home(),)),
                child: Container(
                 padding:const EdgeInsets.symmetric(horizontal: 100,vertical:15),
                 decoration: BoxDecoration(

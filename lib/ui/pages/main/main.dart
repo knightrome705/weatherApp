@@ -1,14 +1,19 @@
 
 import 'package:flutter/material.dart';
+import 'package:forecast/provider/home_provider.dart';
+import 'package:forecast/routes/routes_name.dart';
 import 'package:forecast/ui/components/app_style.dart';
 import 'package:forecast/ui/pages/homescreen/home.dart';
 import 'package:forecast/utils/colors.dart';
+import 'package:provider/provider.dart';
 
 class Main extends StatelessWidget {
   const Main({super.key});
 
   @override
   Widget build(BuildContext context) {
+    var provider=Provider.of<HomeProvider>(context,listen: false);
+    provider.getCurrentWeather();
     return Scaffold(
       body: Container(
         padding:const EdgeInsets.symmetric(horizontal:30),
@@ -28,7 +33,11 @@ class Main extends StatelessWidget {
            const SizedBox(
               height: 60,
             ),
-            Text('North America',style: AppTextStyle.basic.copyWith(fontSize:25),),
+            Consumer<HomeProvider>(
+              builder: (context,data,_) {
+                return Text(data.weather?.location.country??'nodata',style: AppTextStyle.basic.copyWith(fontSize:25),);
+              }
+            ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -121,7 +130,7 @@ class Main extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 InkWell(
-                  onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Home(),)),
+                  onTap: () => Navigator.pushReplacementNamed(context, RouteName.homescreen),
                   child:const Icon(Icons.menu_sharp,size: 80,color: Colors.white,))
               ],
             )
