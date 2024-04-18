@@ -42,9 +42,7 @@ class Splash extends StatelessWidget {
            const  SizedBox(
               height: 10,
              ),
-             InkWell(
-              // onTap: () => Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>const Home(),)),
-               child: Container(
+              Container(
                 padding:const EdgeInsets.symmetric(horizontal: 100,vertical:15),
                 decoration: BoxDecoration(
                   color: const Color.fromARGB(255, 228, 206, 6),
@@ -52,7 +50,6 @@ class Splash extends StatelessWidget {
                 ),
                 child:const Text('Get Start',style: TextStyle(fontWeight: FontWeight.bold,fontSize: 20),),
                ),
-             )
             ],
           ),
         ),

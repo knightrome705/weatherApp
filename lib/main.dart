@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:forecast/provider/home_provider.dart';
 import 'package:forecast/routes/routes_name.dart';
 import 'package:provider/provider.dart';
 
 import 'routes/routes.dart';
 
-void main() {
+void main() async{
+  WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName:"assests/constants/.env");
   runApp(const MyApp());
 }
 

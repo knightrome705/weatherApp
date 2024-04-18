@@ -1,5 +1,5 @@
 
-import 'package:forecast/constants/constants.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:forecast/ui/components/common_toast.dart';
 import 'package:http/http.dart' as http;
 
@@ -10,7 +10,8 @@ class WheatherServices{
 
   static Future<dynamic> getWheatherData()async{
     try{
-      var response=await client.get(Uri.parse('https://api.weatherapi.com/v1/current.json?q=kannur&key=$weatherkey'));
+      var apiKey = dotenv.env['API_KEY'];
+      var response=await client.get(Uri.parse('https://api.weatherapi.com/v1/current.json?q=kannur&key=$apiKey'));
     if(response.statusCode==200){
       var jsondata=response.body;
       return weatherFromJson(jsondata);
