@@ -21,7 +21,7 @@ migrate_working_dir/
 # is commented out by default.
 #.vscode/
 #screat
-/assests/constants/
+/assests/constants/.env
 
 # Flutter/Dart/Pub related
 **/doc/api/
@@ -32,7 +32,7 @@ migrate_working_dir/
 .pub-cache/
 .pub/
 /build/
-/assests/constants/
+/assests/constants/.env
 
 # Symbolication related
 app.*.symbols
@@ -45,4 +45,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 #screat
-/assests/constants/
+/assests/constants/.env
