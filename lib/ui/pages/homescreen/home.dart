@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:forecast/provider/home_provider.dart';
 import 'package:forecast/routes/routes_name.dart';
 import 'package:forecast/ui/components/app_style.dart';
 import 'package:forecast/utils/colors.dart';
 import 'package:provider/provider.dart';
+
+import '../../../provider/homeprovider/home_provider.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -39,7 +40,7 @@ class Home extends StatelessWidget {
                 ),
                 Consumer<HomeProvider>(
                   builder: (context,data,_) {
-                   return Text("${data.weather?.current.tempC ?? 'nodata'} C", style: AppTextStyle.heading2);
+                   return Text("${data.weather?.current.tempC ?? 'nodata'}°C", style: AppTextStyle.heading2);
                   }
                 ),
                 Consumer<HomeProvider>(
@@ -47,12 +48,20 @@ class Home extends StatelessWidget {
                     return  Text(data.weather?.location.region??'nodata',style:const TextStyle(fontSize: 20,color: Colors.white),);
                   }
                 ),
-                const Row(
+                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Max:24',style: TextStyle(fontSize: 20,color: Colors.white),),
-                    SizedBox(width:10,),
-                    Text('Min:18',style: TextStyle(fontSize: 20,color: Colors.white),)
+                    Consumer<HomeProvider>(
+                      builder: (context,data,_) {
+                        return Text('C:${data.weather?.current.tempC}',style:const TextStyle(fontSize: 20,color: Colors.white),);
+                      }
+                    ),
+                   const SizedBox(width:10,),
+                    Consumer<HomeProvider>(
+                      builder: (context,data,_) {
+                        return Text('F:${data.weather?.current.tempF}',style:const TextStyle(fontSize: 20,color: Colors.white),);
+                      }
+                    )
                   ],
                 ),
                 Container(

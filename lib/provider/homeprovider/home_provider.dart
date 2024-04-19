@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:forecast/models/weather_model.dart';
 import 'package:forecast/services/api_services.dart';
 import 'package:forecast/ui/components/common_toast.dart';
-import 'package:geocoding/geocoding.dart';
+// import 'package:geocoding/geocoding.dart';
 import 'package:geolocator/geolocator.dart';
 
 class HomeProvider extends ChangeNotifier{
@@ -16,11 +16,19 @@ class HomeProvider extends ChangeNotifier{
      }
   }
   void getCurrentCordinte()async{
-    final position=await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
+    try{
+      final position=await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.best);
     getCurrentPosition(latitude:position.latitude,longitude: position.longitude);
+    }catch(e){
+      commonToast(message: e.toString());
+    }
   }
   void getCurrentPosition({required  latitude,required  longitude})async{
-    List<Placemark> location=await placemarkFromCoordinates(latitude, longitude);   //try to get the current state
+    try{
+      // List<Placemark> location=await placemarkFromCoordinates(latitude, longitude);   //try to get the current state
     // print(location.first.street);
+    }catch(e){
+      commonToast(message: e.toString());
+    }
   }
 }

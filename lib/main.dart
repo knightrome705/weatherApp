@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:forecast/provider/home_provider.dart';
 import 'package:forecast/routes/routes_name.dart';
 import 'package:provider/provider.dart';
 
+import 'provider/homeprovider/home_provider.dart';
 import 'routes/routes.dart';
 
 void main() async{
@@ -15,7 +15,6 @@ void main() async{
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
@@ -27,7 +26,6 @@ class MyApp extends StatelessWidget {
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
           useMaterial3: true,
         ),
-        // home: const Splash(),
         initialRoute: RouteName.splashscreen,
         onGenerateRoute: Routes.generateRoute,
       ),
