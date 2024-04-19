@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:forecast/provider/home_provider.dart';
 import 'package:forecast/routes/routes_name.dart';
 import 'package:forecast/ui/components/app_style.dart';
-import 'package:forecast/ui/pages/homescreen/home.dart';
 import 'package:forecast/utils/colors.dart';
 import 'package:provider/provider.dart';
 
@@ -13,6 +12,7 @@ class Main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var provider=Provider.of<HomeProvider>(context,listen: false);
+    provider.getCurrentCordinte();
     provider.getCurrentWeather();
     return Scaffold(
       body: Container(
